@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/home";
 import Artikel from "./pages/artikel";
@@ -15,12 +14,13 @@ import ListBersama2 from "./pages/listBersama2";
 import Profil from "./pages/profil";
 import Tabunganbersama from "./pages/tabunganbersama";
 import Tabunganpribadi from "./pages/tabunganpribadi";
+import Login from "./pages/login";
 
 function App(root) {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login/>} />
         <Route path="/home" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/artikel" element={<Artikel />} />

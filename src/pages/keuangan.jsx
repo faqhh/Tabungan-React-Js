@@ -1,226 +1,303 @@
-import React, { Fragment } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Keuangan() { 
+function Keuangan() {
+  // States for managing the form input and the visibility of elements
+  const [income, setIncome] = useState("Rp 5.250.000");
+  const [isEditing, setIsEditing] = useState(false);
+  const [isBannerExpanded, setIsBannerExpanded] = useState(false);
+  const [transactions, setTransactions] = useState([
+    { id: 1, date: "01-09-2024", category: "Belanja Bulanan", amount: "-Rp 2.000.000", note: "makanan dan minuman" },
+    { id: 2, date: "01-09-2024", category: "Transportasi", amount: "-Rp 500.000", note: "busway dan gojek" },
+    { id: 3, date: "16-09-2024", category: "Kebutuhan Pribadi", amount: "-Rp 1.000.000", note: "" },
+    { id: 4, date: "05-10-2024", category: "Voulunter", amount: "+Rp 250.000", note: "" },
+  ]);
+  
+  // State for form data
+  const [formData, setFormData] = useState({
+    date: "2024-09-01",
+    belanjaBulanan: "",
+    transportasi: "",
+    kebutuhanPribadi: ""
+  });
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
+    showNotification("Penghasilan berhasil disimpan!");
+  };
+
+  const handleBannerToggle = () => {
+    setIsBannerExpanded(!isBannerExpanded);
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Store data and reset form
+    setTransactions([
+      ...transactions,
+      {
+        id: transactions.length + 1,
+        date: formData.date,
+        category: "Belanja Bulanan", // You could dynamically add categories based on the input
+        amount: `-Rp ${formData.belanjaBulanan}`,
+        note: formData.belanjaBulanan
+      }
+    ]);
+    showNotification("Data keuangan berhasil disimpan!");
+    setFormData({
+      date: "",
+      belanjaBulanan: "",
+      transportasi: "",
+      kebutuhanPribadi: ""
+    });
+  };
+
+  const showNotification = (message) => {
+    const notification = document.createElement("div");
+    notification.textContent = message;
+    notification.style.position = "fixed";
+    notification.style.bottom = "20px";
+    notification.style.right = "20px";
+    notification.style.backgroundColor = "#4CAF50";
+    notification.style.color = "white";
+    notification.style.padding = "10px 20px";
+    notification.style.borderRadius = "5px";
+    notification.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
+  };
+
   return (
-    <Fragment>
-        <>
-          <meta charSet="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Financial Management</title>
-          <link rel="stylesheet" href="assets/css/keuangan.css" />
-          <header>
-            <img src="assets/img/logo.png" alt="Logo" className="logo" />
-            <nav className="navigation">
-                <Link to ="/home"><a href="home.html">
-                  Home
-                </a></Link>
-                <a
-                  href="#"
-                  className="navigation-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Tabungan
-                </a>
-                <div className="dropdown-menu fade-up m-0">
-                  <Link to ="/formbersama"><a href="formbersama.html" className="dropdown-item">
-                    Tabungan Bersama
-                  </a></Link>
-                  <Link to ="/formpribadi"><a href="formpribadi.html" className="dropdown-item">
-                    Tabungan Mandiri
-                  </a></Link>
-                </div>
-                  <Link to ="/keuangan"><a href="keuangan.html" className="active">Keuangan</a></Link>
-                  <Link to ="/artikel"><a href="Artikel.html">Artikel</a></Link>
-                  <Link to ="/profil"><a href="profil.html">
-                  <button className="profile">Profile</button>
-                  </a></Link>
-              </nav>
-          </header>
-          <section className="banner">
-            <div className="banner-text">
-              <h1>Kelola Keuangan Kamu Sekarang!</h1>
-              <p>
-                Di sini, kamu bisa mengalokasikan dana sesuai kebutuhan, mencatat setiap
-                pemasukan dan pengeluaran, serta membuat grafik perkembangan keuanganmu.
-              </p>
-              <button className="expand-btn">▼</button>
+    <>
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Financial Management</title>
+      <link rel="stylesheet" href="assets/css/keuangan.css" />
+      <header>
+        <img src="assets/img/logo.png" alt="Logo" className="logo" />
+        <nav className="navigation">
+          <Link to="/home">Home</Link>
+          <div className="dropdown">
+            <a href="#" className="navigation-link dropdown-toggle">
+              Tabungan
+            </a>
+            <div className="dropdown-menu">
+              <Link to="/formbersama" className="dropdown-item">
+                Tabungan Bersama
+              </Link>
+              <Link to="/formpribadi" className="dropdown-item">
+                Tabungan Mandiri
+              </Link>
             </div>
-            <img
-              src="assets/img/keuangan.jpeg"
-              alt="Finance Management Image"
-              className="banner-img"
+          </div>
+          <Link to="/keuangan" className="active">Keuangan</Link>
+          <Link to="/artikel">Artikel</Link>
+          <Link to="/profil">
+            <button className="profile">Profile</button>
+          </Link>
+        </nav>
+      </header>
+      <section className="banner">
+        <div className="banner-text">
+          <h1>Kelola Keuangan Kamu Sekarang!</h1>
+            <p>
+              Di sini, kamu bisa mengalokasikan dana sesuai kebutuhan, mencatat setiap pemasukan dan pengeluaran, serta melihat grafik perkembangan keuanganmu. Semua dalam satu tempat untuk memudahkanmu mengatur keuangan dengan lebih efisien!
+            </p>
+        </div>
+        <img src="assets/img/keuangan.jpeg" alt="Finance Management Image" className="banner-img" />
+      </section>
+      <section className="manage-finance">
+        <h2 className="manage-finance-h2">Ayo kelola keuanganmu!</h2>
+        <div className="finance-overview">
+          <div className="income">
+            <label>Penghasilan</label>
+            <input
+              type="text"
+              value={income}
+              onChange={(e) => setIncome(e.target.value)}
+              readOnly={!isEditing}
             />
-          </section>
-          <section className="manage-finance">
-            <h2>Ayo kelola keuanganmu!</h2>
-            <div className="finance-overview">
-              <div className="income">
-                <label>Penghasilan</label>
-                <input type="text" defaultValue="Rp 5.250.000" readOnly="" />
-              </div>
-              <div className="actions">
-                <button className="edit-btn">Edit</button>
-                <button className="save-btn">Simpan</button>
-              </div>
-            </div>
-            <form className="finance-form">
-              <label>Tanggal</label>
-              <input type="date" defaultValue="2024-09-01" />
-              <label>Belanja Bulanan</label>
-              <input type="text" placeholder="Rp 2.000.000" />
-              <label>Transportasi</label>
-              <input type="text" placeholder="Rp 500.000" />
-              <label>Kebutuhan Pribadi</label>
-              <input type="text" placeholder="Rp masukkan nominal" />
-              <button type="submit" className="submit-btn">
-                Simpan
-              </button>
-            </form>
-          </section>
-          <section className="summary">
-            <h3>Pengeluaran dan Penghasilan</h3>
-            <div className="summary-cards">
-              <div className="card">
-                <p>Total Penghasilan</p>
-                <p>Rp 5.000.000</p>
-              </div>
-              <div className="card">
-                <p>Total Pengeluaran</p>
-                <p>Rp 3.500.000</p>
-              </div>
-              <div className="card">
-                <p>Sisa Dana</p>
-                <p>Rp 1.750.000</p>
-              </div>
-            </div>
-          </section>
-          <section className="transactions">
-            <table>
-              <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Tanggal</th>
-                  <th>Kategori</th>
-                  <th>Jumlah</th>
-                  <th>Catatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>01-09-2024</td>
-                  <td>Belanja Bulanan</td>
-                  <td>-Rp 2.000.000</td>
-                  <td>makanan dan minuman</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>01-09-2024</td>
-                  <td>Transportasi</td>
-                  <td>-Rp 500.000</td>
-                  <td>busway dan gojek</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-          <section>
-            <div className="container">
-              <div className="title">Grafik Pemasukkan dan Pengeluaran</div>
-              <div className="chart">
-                <div className="bar">
-                  <div className="income">Pemasukkan</div>
-                  <div className="expense">Pengeluaran</div>
-                  <p>April</p>
-                </div>
-                <div className="bar">
-                  <div className="income" style={{ height: "40%" }}>
-                    Pemasukkan
-                  </div>
-                  <div className="expense" style={{ height: "60%" }}>
-                    Pengeluaran
-                  </div>
-                  <p>Mei</p>
-                </div>
-                <div className="bar">
-                  <div className="income" style={{ height: "25%" }}>
-                    Pemasukkan
-                  </div>
-                  <div className="expense" style={{ height: "75%" }}>
-                    Pengeluaran
-                  </div>
-                  <p>Juni</p>
-                </div>
-                <div className="bar">
-                  <div className="income" style={{ height: "50%" }}>
-                    Pemasukkan
-                  </div>
-                  <div className="expense" style={{ height: "50%" }}>
-                    Pengeluaran
-                  </div>
-                  <p>Juli</p>
-                </div>
-                <div className="bar">
-                  <div className="income" style={{ height: "20%" }}>
-                    Pemasukkan
-                  </div>
-                  <div className="expense" style={{ height: "80%" }}>
-                    Pengeluaran
-                  </div>
-                  <p>Agustus</p>
-                </div>
-                <div className="bar">
-                  <div className="income" style={{ height: "45%" }}>
-                    Pemasukkan
-                  </div>
-                  <div className="expense" style={{ height: "55%" }}>
-                    Pengeluaran
-                  </div>
-                  <p>September</p>
-                </div>
-              </div>
-              <div className="legend">
-                <div className="income-legend">
-                  <span />: Pemasukkan
-                </div>
-                <div className="expense-legend">
-                  <span />: Pengeluaran
-                </div>
+          </div>
+          <div className="actions">
+            <button className="edit-btn" onClick={handleEditClick} style={{ display: isEditing ? 'none' : 'inline-block' }}>
+              Edit
+            </button>
+            <button className="save-btn" onClick={handleSaveClick} style={{ display: isEditing ? 'inline-block' : 'none' }}>
+              Simpan
+            </button>
+          </div>
+        </div>
+        <form className="finance-form" onSubmit={handleFormSubmit}>
+          <label>Tanggal</label>
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleFormChange}
+          />
+          <label>Belanja Bulanan</label>
+          <input
+            type="text"
+            name="belanjaBulanan"
+            value={formData.belanjaBulanan}
+            placeholder="Rp 2.000.000"
+            onChange={handleFormChange}
+          />
+          <label>Transportasi</label>
+          <input
+            type="text"
+            name="transportasi"
+            value={formData.transportasi}
+            placeholder="Rp 500.000"
+            onChange={handleFormChange}
+          />
+          <label>Kebutuhan Pribadi</label>
+          <input
+            type="text"
+            name="kebutuhanPribadi"
+            value={formData.kebutuhanPribadi}
+            placeholder="Rp masukkan nominal"
+            onChange={handleFormChange}
+          />
+          <button type="submit" className="submit-btn">
+            Simpan
+          </button>
+        </form>
+      </section>
+
+      <section className="summary">
+        <div className="card-2">
+          <div className="card-header">
+            <p className="icon-bar-chart">Pengeluaran dan Penghasilan</p>
+            <button className="dropdown-button">▼</button>
+          </div>
+        </div>
+        <div className="summary-cards">
+          <div className="card">
+            <h1>Total Penghasilan</h1>
+            <p>Rp 5.000.000</p>
+          </div>
+          <div className="card">
+            <h1>Total Pengeluaran</h1>
+            <p>Rp 3.500.000</p>
+          </div>
+          <div className="card">
+            <h1>Sisa Dana</h1>
+            <p>Rp 1.750.000</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="transactions">
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Tanggal</th>
+              <th>Kategori</th>
+              <th>Jumlah</th>
+              <th>Catatan</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map((transaction) => (
+              <tr key={transaction.id}>
+                <td>{transaction.id}</td>
+                <td>{transaction.date}</td>
+                <td>{transaction.category}</td>
+                <td>{transaction.amount}</td>
+                <td>{transaction.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+      <section className="summary">
+          <div>
+            <div class="card-2">
+              <div class="card-header">
+                <p class="icon-bar-chart">Grafik Pemasukan dan Pengeluaran</p>
+                <button class="dropdown-button">▼</button>
               </div>
             </div>
-          </section>
-          <section>
-            <footer className="footer">
-              <div className="footer-content">
-                <div className="footer-left">
-                  <p>© 2024 Tabungin Inc.</p>
-                  <a href="#">Terms &amp; conditions</a>
-                  <a href="#">Privacy policy</a>
-                  <a href="#">Contact us</a>
-                </div>
-                <div className="footer-right">
-                  <a href="#">
-                    <img src="assets/img/f1.jpg" alt="Instagram" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/f2.jpg" alt="Facebook" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/f3.jpg" alt="YouTube" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/f4.jpg" alt="LinkedIn" />
-                  </a>
-                  <a href="#">
-                    <img src="assets/img/f5.jfif" alt="Twitter" />
-                  </a>
-                </div>
+            <div className="chart">
+              <div className="bar">
+                <div className="income">Pemasukkan</div>
+                <div className="expense">Pengeluaran</div>
+                <p>April</p>
               </div>
-            </footer>
-          </section>
-        </>
-    </Fragment>
-    
+              <div className="bar">
+                <div className="income" style={{ height: "40%" }}>
+                  Pemasukkan
+                </div>
+                <div className="expense" style={{ height: "60%" }}>
+                  Pengeluaran
+                </div>
+                <p>Mei</p>
+              </div>
+              <div className="bar">
+                <div className="income" style={{ height: "25%" }}>
+                  Pemasukkan
+                </div>
+                <div className="expense" style={{ height: "75%" }}>
+                  Pengeluaran
+                </div>
+                <p>Juni</p>
+              </div>
+              <div className="bar">
+                <div className="income" style={{ height: "50%" }}>
+                  Pemasukkan
+                </div>
+                <div className="expense" style={{ height: "50%" }}>
+                  Pengeluaran
+                </div>
+                <p>Juli</p>
+              </div>
+              <div className="bar">
+                <div className="income" style={{ height: "20%" }}>
+                  Pemasukkan
+                </div>
+                <div className="expense" style={{ height: "80%" }}>
+                  Pengeluaran
+                </div>
+                <p>Agustus</p>
+              </div>
+              <div className="bar">
+                <div className="income" style={{ height: "45%" }}>
+                  Pemasukkan
+                </div>
+                <div className="expense" style={{ height: "55%" }}>
+                  Pengeluaran
+                </div>
+                <p>September</p>
+              </div>
+            </div>
+            <div className="legend">
+              <div className="income-legend">
+                <span />: Pemasukkan
+              </div>
+              <div className="expense-legend">
+                <span />: Pengeluaran
+              </div>
+            </div>
+          </div>
+        </section>
+    </>
   );
 }
 

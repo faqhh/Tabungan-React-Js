@@ -16,12 +16,12 @@ function Formpribadi() {
           <header>
             <img src="assets/img/logo.png" alt="Logo" className="logo" />
             <nav className="navigation">
-                <Link to ="/home"><a href="home.html" className="active">
+                <Link to ="/home"><a href="home.html">
                   Home
                 </a></Link>
                 <a
                   href="#"
-                  className="navigation-link dropdown-toggle"
+                  className="navigation-link dropdown-toggle active"
                   data-bs-toggle="dropdown"
                 >
                   Tabungan
@@ -57,8 +57,10 @@ function Formpribadi() {
                     </div>
                   </div>
                   <div className="form-group">
+                  <Link to ="/listBersama">
                     <label>Jenis Tabungan</label>
                     <div className="select-box">Bersama</div>
+                  </Link>
                   </div>
                   <div className="form-group">
                     <label>Tanggal Awal Setor</label>
@@ -94,7 +96,7 @@ function Formpribadi() {
                     <button type="button" className="cancel">
                       Batal
                     </button>
-                    <Link to ="/isiartikel"><a href="list.html">
+                    <Link to ="/list"><a href="list.html">
                       <button type="submit" className="save">
                         Simpan
                       </button>

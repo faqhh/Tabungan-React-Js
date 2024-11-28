@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         console.log("Login successful!");
-        alert("Login Successful!");
+        alert("Logsin Succesful!");
         window.location.href = "pages/home.jsx";
     });
 

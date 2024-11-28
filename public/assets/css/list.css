@@ -109,7 +109,51 @@ nav {
     color: #1f2468;
 }
 
-/* Konten Utama */
+.card {
+    width: 320px;
+    background-color: #f8f9fa; /* Warna latar kartu */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan kartu */
+    overflow: hidden; /* Supaya elemen tidak keluar dari batas */
+    padding: 15px;
+  }
+  
+  /* Header Kartu */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Ikon Bintang */
+  .star-icon {
+    font-size: 18px;
+    color: #f1c40f; /* Warna emas */
+  }
+  
+  /* Judul */
+  .card-header span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Warna teks */
+  }
+  
+  /* Ikon Edit */
+  .edit-icon {
+    font-size: 18px;
+    color: #7f8c8d; /* Warna abu-abu */
+    cursor: pointer;
+  }
+  
+  /* Gambar Kartu */
+  .card-image {
+    width: 100%;
+    height: 200px; /* Tinggi gambar */
+    object-fit: cover; /* Menyesuaikan gambar */
+    border-radius: 8px; /* Sudut gambar membulat */
+  }
+
 main {
     padding-top: 80px;
     display: flex;
@@ -125,7 +169,8 @@ main {
 .tabungan-container h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #1e3a8a;
+    color: #020202;
+    font-weight: bold;
 }
 
 /* Pilihan Jenis Tabungan */

@@ -1,75 +1,119 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom"; 
+import { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-function SignUp() { 
+function SignUp() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+  });
+  const formRef = useRef();
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    console.log("Form submitted!");
-    
+    e.preventDefault();
+    const { name, username, email, password } = formData;
+    if (name && username && email && password) {
+      alert(`Pendaftaran berhasil! Selamat datang, ${name}`);
+      navigate("/"); 
+    } else {
+      alert("Silakan lengkapi semua field untuk mendaftar.");
+    }
+  };
+
+  const handleGoogleRegister = () => {
+    console.log("Continue with Google clicked!");
+  };
+
+  const handleFaq = () => {
+    formRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <Fragment>
-      <>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register Page</title>
-        <link rel="stylesheet" href="assets/css/styles.css" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        />
-        <header>
-          <img src="assets/img/logo.png" alt="Logo" className="logo" />
-          <nav className="navigation">
-              <Link to="/login">
-                <button className="profile">Login</button>
-              </Link>
-          </nav>
-        </header>
-        <main className="register-container">
-          <div className="register-box">
-            <h2>Kamu Belum Mempunyai Akun, Daftarkan Sekarang!</h2>
-            <form onSubmit={handleSubmit}> 
-              <label htmlFor="name">Nama</label>
-              <input type="text" id="name" placeholder="Masukkan Nama Anda" required />
-              
-              <label htmlFor="username">Username</label>
-              <input type="text" id="username" placeholder="Masukkan Username Anda" required />
-              
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" placeholder="Masukkan Email Anda" required />
-              
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Masukkan Kata Sandi"
-                required
-              />
-              
-              <button type="submit" className="register-btn">
-                Sign Up
-              </button>
-              <div className="divider">Or</div>
-
-              <button
-                type="button"
-                className="google-register"
-                aria-label="Continue with Google"
-              >
-                Continue with Google
-              </button>
-            </form>
-          </div>
-        </main>
-        <footer>
-          <button className="faq-btn">
-            FAQ & Bantuan <span>❓</span>
-          </button>
-        </footer>
-      </>
-    </Fragment>
+      <div className="register">
+      <header>
+      <link rel="stylesheet" href="assets/css/styles.css" />
+      <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <img src="assets/img/logo.png" alt="Logo" className="logo" />
+        <nav className="navigation">
+          <Link to="/">
+            <button className="profile">Login</button>
+          </Link>
+        </nav>
+      </header>
+      <main>
+        <div class="register-container">
+        <div className="register-box" ref={formRef}>
+          <h2>Kamu Belum Mempunyai Akun, Daftarkan Sekarang!</h2>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Nama</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Masukkan Nama Anda"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Masukkan Username Anda"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Masukkan Email Anda"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan Kata Sandi"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <button type="submit" className="register-btn">
+              Sign Up
+            </button>
+            <div className="divider">Or</div>
+            <button
+              type="button"
+              className="google-register"
+              aria-label="Continue with Google"
+              onClick={handleGoogleRegister}
+            >
+              Continue with Google
+            </button>
+          </form>
+        </div>
+        </div>
+      </main>
+      <footer>
+        <button className="faq-btn" onClick={handleFaq}>
+          FAQ & Bantuan <span>❓</span>
+        </button>
+      </footer>
+    </div>
   );
 }
 

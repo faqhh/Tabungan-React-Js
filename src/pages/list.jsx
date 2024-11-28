@@ -16,12 +16,12 @@ function List() {
         <header>
           <img src="assets/img/logo.png" alt="Logo" className="logo" />
           <nav className="navigation">
-                <Link to ="/home"><a href="home.html" className="active">
+                <Link to ="/home"><a href="home.html">
                   Home
                 </a></Link>
                 <a
                   href="#"
-                  className="navigation-link dropdown-toggle"
+                  className="navigation-link dropdown-toggle active"
                   data-bs-toggle="dropdown"
                 >
                   Tabungan
@@ -42,68 +42,82 @@ function List() {
               </nav>
         </header>
         <main>
-          <section className="tabungan-container">
-            <h1>Tabungan Pribadi</h1>
-            <div className="tabungan-select">
-              <button>
-                <span>🗂️ Pilih Jenis Tabungan</span>
-                <span className="tabungan-jenis">Pribadi</span>
-              </button>
+    <section className="tabungan-container">
+      <h1>Tabungan Mandiri</h1>
+      <div className="tabungan-select">
+        <button>
+          <span>🗂️ Pilih Jenis Tabungan</span>
+          <span className="tabungan-jenis">Pribadi</span>
+        </button>
+      </div>
+      <div className="tabungan-card">
+        <div className="tabungan-item">
+        <div class="card">
+    <div class="card-header">
+      <i class="star-icon">★</i>
+      <span>Macbook</span>
+      <i class="edit-icon">✏️</i>
+    </div>
+    <img
+      src="assets/img/macbook.jpg"
+      alt="Holiday Beach"
+      class="card-image"
+    />
+  </div>
+          <div className="tabungan-info">
+            <div>
+              Target <span>Rp 30.000.000</span>
             </div>
-            <div className="tabungan-card">
-              <div className="tabungan-item">
-                <div className="tabungan-header">
-                  <span className="star">⭐</span>
-                  <h2>Macbook</h2>
-                  <span className="edit">✏️</span>
-                </div>
-                <img src="assets/img/macbook.jpg" alt="Macbook" className="item-image" />
-                <div className="tabungan-info">
-                  <div>
-                    Target <span>Rp 30.000.000</span>
-                  </div>
-                  <div>
-                    Nominal Setor <span>Rp 200.000</span>
-                  </div>
-                  <div>
-                    Tanggal Awal Setor <span>24/10/2024</span>
-                  </div>
-                  <div>
-                    Tanggal Akhir Setor <span>24/12/2024</span>
-                  </div>
-                  <div>
-                    Nominal Saat Ini <span>Rp 15.000.000</span>
-                  </div>
-                </div>
-              </div>
-              <div className="tabungan-item">
-                <div className="tabungan-header">
-                  <span className="star">⭐</span>
-                  <h2>Skincare</h2>
-                  <span className="edit">✏️</span>
-                </div>
-                <img src="assets/img/skincare.jpeg" alt="Skincare" className="item-image" />
-                <div className="tabungan-info">
-                  <div>
-                    Target <span>Rp 1.000.000</span>
-                  </div>
-                  <div>
-                    Nominal Setor <span>Rp 50.000</span>
-                  </div>
-                  <div>
-                    Tanggal Awal Setor <span>25/12/2024</span>
-                  </div>
-                  <div>
-                    Tanggal Akhir Setor <span>25/1/2024</span>
-                  </div>
-                  <div>
-                    Nominal Saat Ini <span>Rp 300.000</span>
-                  </div>
-                </div>
-              </div>
+            <div>
+              Nominal Setor <span>Rp 200.000</span>
             </div>
-          </section>
-        </main>
+            <div>
+              Tanggal Awal Setor <span>24/10/2024</span>
+            </div>
+            <div>
+              Tanggal Akhir Setor <span>24/12/2024</span>
+            </div>
+            <div>
+              Nominal Saat Ini <span>Rp 15.000.000</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div className="tabungan-card">
+        <div className="tabungan-item">
+        <div class="card">
+    <div class="card-header">
+      <i class="star-icon">★</i>
+      <span>Skincare</span>
+      <i class="edit-icon">✏️</i>
+    </div>
+    <img
+      src="assets/img/skincare.jpeg"
+      alt="Holiday Beach"
+      class="card-image"
+    />
+  </div>
+          <div className="tabungan-info">
+            <div>
+              Target <span>Rp 1.000.000</span>
+            </div>
+            <div>
+              Nominal Setor <span>Rp 50.000</span>
+            </div>
+            <div>
+              Tanggal Awal Setor <span>25/12/2024</span>
+            </div>
+            <div>
+              Tanggal Akhir Setor <span>25/1/2024</span>
+            </div>
+            <div>
+              Nominal Saat Ini <span>Rp 300.000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
       </>
     </Fragment>
     

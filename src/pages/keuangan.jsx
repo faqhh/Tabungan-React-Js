@@ -1,7 +1,27 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
+import Footer from "../component/Footer";
 
 function Keuangan() {
+  const [notifications, setNotifications] = useState([
+    { id: 1, message: "Bayar tagihan listrik sebelum 30 November.", type: "Pengingat" },
+    { id: 2, message: "Gaji sebesar Rp 20.000.000 telah diterima.", type: "Pemasukan" },
+    { id: 3, message: "Dividen saham sebesar Rp 2.000.000 telah diterima.", type: "Investasi" },
+  ]);
+  
+  const [isNotificationPanelVisible, setIsNotificationPanelVisible] = useState(false);
+
+  const toggleNotificationPanel = () => {
+    setIsNotificationPanelVisible(!isNotificationPanelVisible);
+  };
+
+  const clearNotifications = () => {
+    setNotifications([]);
+    setIsNotificationPanelVisible(false);
+  };
+
   // States for managing the form input and the visibility of elements
   const [income, setIncome] = useState("Rp 5.250.000");
   const [isEditing, setIsEditing] = useState(false);
@@ -91,27 +111,48 @@ function Keuangan() {
       <header>
         <img src="assets/img/logo.png" alt="Logo" className="logo" />
         <nav className="navigation">
-          <Link to="/home">Home</Link>
-          <div className="dropdown">
-            <a href="#" className="navigation-link dropdown-toggle">
-              Tabungan
-            </a>
-            <div className="dropdown-menu">
-              <Link to="/formbersama" className="dropdown-item">
-                Tabungan Bersama
-              </Link>
-              <Link to="/formpribadi" className="dropdown-item">
-                Tabungan Mandiri
-              </Link>
-            </div>
+          <Link to="/home"><a href="home.html">Home</a></Link>
+          <a href="#" className="navigation-link dropdown-toggle text-green-500" data-bs-toggle="dropdown">Tabungan</a>
+          <div className="dropdown-menu fade-up m-0">
+            <Link to="/formbersama">
+              <a href="formbersama.html" className="dropdown-item">Tabungan Bersama</a>
+            </Link>
+            <Link to="/formpribadi">
+              <a href="formpribadi.html" className="dropdown-item">Tabungan Mandiri</a>
+            </Link>
           </div>
-          <Link to="/keuangan" className="active">Keuangan</Link>
-          <Link to="/artikel">Artikel</Link>
-          <Link to="/profil">
-            <button className="profile">Profile</button>
-          </Link>
+          <Link to="/keuangan"><a href="keuangan.html" className="active">Keuangan</a></Link>
+          <Link to="/artikel"><a href="Artikel.html">Artikel</a></Link>
+          <div className="profile-section">
+            <button className="notification-bell" onClick={toggleNotificationPanel}>
+              <FontAwesomeIcon icon={faBell} />
+              {notifications.length > 0 && <span className="notification-count">{notifications.length}</span>}
+            </button>
+            <Link to="/profil">
+              <a href="profil.html">
+                <button className="profile">Profile</button>
+              </a>
+            </Link>
+          </div>
         </nav>
       </header>
+      {isNotificationPanelVisible && (
+        <div className="notification-panel">
+          <h3>Notifications</h3>
+          <ul>
+            {notifications.length > 0 ? (
+              notifications.map((notification) => (
+                <li key={notification.id} className="border-notif">
+                  <strong>{notification.type}:</strong> {notification.message}
+                </li>
+              ))
+            ) : (
+              <li>No new notifications</li>
+            )}
+          </ul>
+          <button onClick={clearNotifications}>Clear All</button>
+        </div>
+      )}
       <section className="banner">
         <div className="banner-text">
           <h1>Kelola Keuangan Kamu Sekarang!</h1>
@@ -297,6 +338,7 @@ function Keuangan() {
             </div>
           </div>
         </section>
+        <Footer/>
     </>
   );
 }

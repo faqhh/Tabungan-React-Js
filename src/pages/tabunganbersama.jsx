@@ -1,13 +1,32 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 function Tabunganbersama() {
+  const [notifications, setNotifications] = useState([
+    { id: 1, message: "Bayar tagihan listrik sebelum 30 November.", type: "Pengingat" },
+    { id: 2, message: "Gaji sebesar Rp 20.000.000 telah diterima.", type: "Pemasukan" },
+    { id: 3, message: "Dividen saham sebesar Rp 2.000.000 telah diterima.", type: "Investasi" },
+  ]);
+  
+  const [isNotificationPanelVisible, setIsNotificationPanelVisible] = useState(false);
+
+  const toggleNotificationPanel = () => {
+    setIsNotificationPanelVisible(!isNotificationPanelVisible);
+  };
+
+  const clearNotifications = () => {
+    setNotifications([]);
+    setIsNotificationPanelVisible(false);
+  };
+
   const [frequency, setFrequency] = useState("Mingguan");
   const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1); // Navigate back to the previous page
+    navigate(-1); 
   };
 
   const handleFrequencyChange = (newFrequency) => {
@@ -48,38 +67,57 @@ function Tabunganbersama() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       />
-
       <header>
         <img src="assets/img/logo.png" alt="Logo" className="logo" />
         <nav className="navigation">
-          <Link to="/profil" >
-            Home
-          </Link>
-          <a href="#" className="navigation-link dropdown-toggle active ">
-            Tabungan
-          </a>
+          <Link to="/home"><a href="home.html">Home</a></Link>
+          <a href="#" className="navigation-link dropdown-toggle text-green-500 active" data-bs-toggle="dropdown">Tabungan</a>
           <div className="dropdown-menu fade-up m-0">
-            <Link to="/formbersama" className="dropdown-item">
-              Tabungan Bersama
+            <Link to="/formbersama">
+              <a href="formbersama.html" className="dropdown-item">Tabungan Bersama</a>
             </Link>
-            <Link to="/formpribadi" className="dropdown-item">
-              Tabungan Mandiri
+            <Link to="/formpribadi">
+              <a href="formpribadi.html" className="dropdown-item">Tabungan Mandiri</a>
             </Link>
           </div>
-          <Link to="/keuangan">Keuangan</Link>
-          <Link to="/artikel">Artikel</Link>
-          <Link to="/profil">
-            <button className="profile">Profile</button>
-          </Link>
+          <Link to="/keuangan"><a href="keuangan.html">Keuangan</a></Link>
+          <Link to="/artikel"><a href="Artikel.html">Artikel</a></Link>
+          <div className="profile-section">
+            <button className="notification-bell" onClick={toggleNotificationPanel}>
+              <FontAwesomeIcon icon={faBell} />
+              {notifications.length > 0 && <span className="notification-count">{notifications.length}</span>}
+            </button>
+            <Link to="/profil">
+              <a href="profil.html">
+                <button className="profile">Profile</button>
+              </a>
+            </Link>
+          </div>
         </nav>
       </header>
-
+      {isNotificationPanelVisible && (
+        <div className="notification-panel">
+          <h3>Notifications</h3>
+          <ul>
+            {notifications.length > 0 ? (
+              notifications.map((notification) => (
+                <li key={notification.id} className="border-notif">
+                  <strong>{notification.type}:</strong> {notification.message}
+                </li>
+              ))
+            ) : (
+              <li>No new notifications</li>
+            )}
+          </ul>
+          <button onClick={clearNotifications}>Clear All</button>
+        </div>
+      )}
       <main>
         <section className="edit-tabungan-container">
-          <div className="back-button" onClick={handleBack}>
-            ⬅️
-          </div>
-          <h1>Holiday</h1>
+          <div className="header">
+            < button className="back-button" onClick={handleBack}>⬅️</button>
+            <h1>Holiday</h1>
+        </div>
           <div className="form-container">
             <div className="image-section">
               <img
@@ -104,7 +142,7 @@ function Tabunganbersama() {
               </div>
               <div className="form-group">
                 <label>Nominal Setor</label>
-                <input type="text" defaultValue="Rp 100.000" />
+                <input type="text" defaultValue="Rp 1.000.000" />
               </div>
               <div className="form-group">
                 <label>Tanggal Awal Setor</label>

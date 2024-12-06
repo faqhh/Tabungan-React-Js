@@ -11,6 +11,46 @@ body {
     background-color: #d9e8f0;
 }
 
+.card {
+    width: 320px;
+    background-color: #f8f9fa; 
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    padding: 15px;
+}
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .star-icon {
+    font-size: 18px;
+    color: #f1c40f; 
+  }
+  
+  .card-header span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; 
+  }
+  
+  .edit-icon {
+    font-size: 18px;
+    color: #7f8c8d; 
+    cursor: pointer;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 15px; 
+  }
+
 header {
     display: flex;
     align-items: center;
@@ -20,6 +60,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-radius: 0 0 15px 15px;
 }
 
 header .logo {
@@ -60,7 +101,7 @@ nav {
     left: 70px;
     background-color: #2a448c;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 15px;
     overflow: hidden;
     z-index: 100;
     min-width: 150px;
@@ -93,65 +134,55 @@ nav {
 .navigation a.active {
     background-color: #3749b4;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
 .navigation .profile {
-    background-color: #3749b4;
     border: none;
     color: white;
     padding: 8px 16px;
-    border-radius: 8px;
     cursor: pointer;
 }
 
 .navigation .profile:hover {
     color: #1f2468;
 }
-
-.card {
-    width: 320px;
-    background-color: #f8f9fa; /* Warna latar kartu */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan kartu */
-    overflow: hidden; /* Supaya elemen tidak keluar dari batas */
-    padding: 15px;
+.notification-panel {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 30px;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  /* Header Kartu */
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding:  2px 6px;
+    font-size: 10px;
   }
   
-  /* Ikon Bintang */
-  .star-icon {
-    font-size: 18px;
-    color: #f1c40f; /* Warna emas */
-  }
-  
-  /* Judul */
-  .card-header span {
-    font-size: 18px;
+  .notification-panel h3{
     font-weight: bold;
-    color: #333; /* Warna teks */
   }
-  
-  /* Ikon Edit */
-  .edit-icon {
-    font-size: 18px;
-    color: #7f8c8d; /* Warna abu-abu */
+
+.border-notif{
+    border-bottom: 1px solid;
+}
+  .notification-bell {
+    position: relative;
+    background: none;
+    border: none;
     cursor: pointer;
-  }
-  
-  /* Gambar Kartu */
-  .card-image {
-    width: 100%;
-    height: 200px; /* Tinggi gambar */
-    object-fit: cover; /* Menyesuaikan gambar */
-    border-radius: 8px; /* Sudut gambar membulat */
+    flex-direction: column-reverse;
   }
 
 main {
@@ -169,7 +200,7 @@ main {
 .tabungan-container h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #020202;
+    color: #000000;
     font-weight: bold;
 }
 
@@ -182,7 +213,7 @@ main {
     border: 1px solid #c0c4c7;
     padding: 10px;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -201,7 +232,7 @@ main {
     display: flex;
     background-color: white;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     align-items: center;
@@ -226,21 +257,21 @@ main {
 .edit {
     font-size: 18px;
     cursor: pointer;
+
 }
 
 .item-image {
-    width: 100px;
-    height: 100px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 15px;
     margin-right: 20px;
-    display: flex;
+    /* display: flex; */
     background-color: #f8f9fa;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 20px;
     padding: 15px;
-    align-items: center;
+    /* align-items: center; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -273,7 +304,7 @@ main {
     display: flex;
     background-color: #f8f9fa;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 20px;
     padding: 15px;
     align-items: center;
@@ -293,7 +324,7 @@ main {
 .item-image img {
     width: 100px;
     height: auto;
-    border-radius: 8px;
+    border-radius: 15px;
     border: 1px solid #ccc;
 }
 
@@ -316,7 +347,7 @@ main {
     flex-direction: column;
     flex-grow: 1;
     background-color: #f3f7fb;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 10px;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }

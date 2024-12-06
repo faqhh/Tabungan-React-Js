@@ -1,4 +1,4 @@
-/* Reset gaya */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
 .card {
     width: 320px;
     background-color: #f8f9fa; 
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     overflow: hidden; 
     padding: 15px;
@@ -27,32 +27,28 @@ body {
     margin-bottom: 10px;
   }
   
-  /* Ikon Bintang */
   .star-icon {
     font-size: 18px;
-    color: #f1c40f; /* Warna emas */
+    color: #f1c40f; 
   }
   
-  /* Judul */
   .card-header span {
     font-size: 18px;
     font-weight: bold;
-    color: #333; /* Warna teks */
+    color: #333; 
   }
   
-  /* Ikon Edit */
   .edit-icon {
     font-size: 18px;
-    color: #7f8c8d; /* Warna abu-abu */
+    color: #7f8c8d; 
     cursor: pointer;
   }
   
-  /* Gambar Kartu */
   .card-image {
     width: 100%;
-    height: 200px; /* Tinggi gambar */
-    object-fit: cover; /* Menyesuaikan gambar */
-    border-radius: 8px; /* Sudut gambar membulat */
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 15px; 
   }
 
 header {
@@ -64,6 +60,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-radius: 0 0 15px 15px;
 }
 
 header .logo {
@@ -104,7 +101,7 @@ nav {
     left: 70px;
     background-color: #2a448c;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 15px;
     overflow: hidden;
     z-index: 100;
     min-width: 150px;
@@ -137,23 +134,57 @@ nav {
 .navigation a.active {
     background-color: #3749b4;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
 .navigation .profile {
-    background-color: #3749b4;
     border: none;
     color: white;
     padding: 8px 16px;
-    border-radius: 8px;
     cursor: pointer;
 }
 
 .navigation .profile:hover {
     color: #1f2468;
 }
+.notification-panel {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 30px;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding:  2px 6px;
+    font-size: 10px;
+  }
+  
+  .notification-panel h3{
+    font-weight: bold;
+  }
 
-/* Konten Utama */
+.border-notif{
+    border-bottom: 1px solid;
+}
+  .notification-bell {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column-reverse;
+  }
+
 main {
     padding-top: 80px;
     display: flex;
@@ -182,7 +213,7 @@ main {
     border: 1px solid #c0c4c7;
     padding: 10px;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -201,7 +232,7 @@ main {
     display: flex;
     background-color: white;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     align-items: center;
@@ -232,12 +263,12 @@ main {
 .item-image {
     height: 200px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 15px;
     margin-right: 20px;
     /* display: flex; */
     background-color: #f8f9fa;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 20px;
     padding: 15px;
     /* align-items: center; */
@@ -273,7 +304,7 @@ main {
     display: flex;
     background-color: #f8f9fa;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 20px;
     padding: 15px;
     align-items: center;
@@ -293,7 +324,7 @@ main {
 .item-image img {
     width: 100px;
     height: auto;
-    border-radius: 8px;
+    border-radius: 15px;
     border: 1px solid #ccc;
 }
 
@@ -316,7 +347,7 @@ main {
     flex-direction: column;
     flex-grow: 1;
     background-color: #f3f7fb;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 10px;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }

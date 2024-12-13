@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     build: {
-    outDir: 'dist',
+    outDir: 'build',
     alias: {
       '@': '/src',
     },

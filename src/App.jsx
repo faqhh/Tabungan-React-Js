@@ -14,7 +14,8 @@ import ListBersama2 from "./pages/listBersama2";
 import Profil from "./pages/profil";
 import Tabunganbersama from "./pages/tabunganbersama";
 import Tabunganpribadi from "./pages/tabunganpribadi";
-import Login from '@/pages/Login';
+import Login from "./pages/Login";
+
 
 
 function App(root) {

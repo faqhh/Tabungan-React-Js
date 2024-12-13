@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Login from "./login";
+import Login from '@/pages/login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 

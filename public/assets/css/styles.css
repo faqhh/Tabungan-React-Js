@@ -46,11 +46,11 @@ nav {
 }
 
 .navigation .profile{
-    background-color: #3749b4;
+    background-color: #ffffff;
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 15px;
     cursor: pointer;
 }
 

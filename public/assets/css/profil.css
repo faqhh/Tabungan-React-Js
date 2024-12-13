@@ -87,18 +87,19 @@ nav {
 }
 
 .navigation a.active {
-    background-color: #3749b4;
+    background-color: #ffffff;
     padding: 8px 16px;
     border-radius: 15px;
 }
 
 .navigation .profile {
-    background-color: #3749b4;
+    background-color: #ffffff;
     border: none;
-    color: white;
+    color: rgb(12, 12, 12);
     padding: 8px 16px;
     border-radius: 15px;
     cursor: pointer;
+
 }
 
 .navigation .profile:hover {

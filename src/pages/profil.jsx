@@ -34,9 +34,9 @@ function Profil() {
   };
 
   const resetForm = () => {
-    document.getElementById("name").value = "zea";
-    document.getElementById("email").value = "zealiyina@gmail.com";
-    document.getElementById("password").value = "****";
+    document.getElementById("name").value = "muhamad Nur Faqih";
+    document.getElementById("email").value = "mnurfaqih7@gmail.com";
+    document.getElementById("password").value = "*********";
     document.getElementById("language").value = "Bahasa Indonesia";
   };
 
@@ -63,7 +63,7 @@ function Profil() {
         <img src="assets/img/logo.png" alt="Logo" className="logo" />
         <nav className="navigation">
         <Link to="/home">Home</Link>
-          <a href="#" className="navigation-link dropdown-toggle text-green-500" data-bs-toggle="dropdown">Tabungan</a>
+          <a href="#" className="navigation-link dropdown-toggle" data-bs-toggle="dropdown">Tabungan</a>
           <div className="dropdown-menu fade-up m-0">
             <Link to="/formbersama">
               <a href="formbersama.html" className="dropdown-item">Tabungan Bersama</a>
@@ -111,7 +111,7 @@ function Profil() {
               <div className="profile-content">
                 <div className="profile-header">
                   <img
-                    src="assets/img/profile.jpg"
+                    src="assets/img/123.png"
                     alt="Foto Profil"
                     className="profile-photo"
                     id="profilePhoto"
@@ -123,15 +123,15 @@ function Profil() {
                 <form className="profile-form" onSubmit={saveChanges}>
                   <div className="form-group">
                     <label htmlFor="name">Nama</label>
-                    <input type="text" id="name" defaultValue="zea" />
+                    <input type="text" id="name" defaultValue="muhamad nur faqih" />
                   </div>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" defaultValue="zealiyina@gmail.com" />
+                    <input type="email" id="email" defaultValue="mnrfaqih7@gmail.com" />
                   </div>
                   <div className="form-group">
                     <label htmlFor="password">Kata Sandi</label>
-                    <input type="password" id="password" defaultValue="****" />
+                    <input type="password" id="password" defaultValue="*********" />
                   </div>
                   <div className="form-group">
                     <label htmlFor="language">Bahasa</label>

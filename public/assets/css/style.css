@@ -49,11 +49,11 @@ nav {
 }
 
 .navigation .profile{
-    background-color: #3749b4;
+    background-color: #fcfcfc;
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
@@ -66,9 +66,10 @@ nav {
 }
 
 .navigation a.active{
-    background-color: #3749b4;
+    background-color: #ffffff;
     padding: 8px 16px;
     border-radius: 15px;
+    
 } 
 
 .login-container {
@@ -120,9 +121,7 @@ input {
     border: none;
     padding: 10px;
     border-radius: 15px;
-    /* cursor: pointer; */
     font-weight: bold;
-    /* transition: background-color 0.3s; */
 }
 
 .login-btn:hover {

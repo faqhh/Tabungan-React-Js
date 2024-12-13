@@ -43,7 +43,6 @@ nav {
 
 .navigation a {
     text-decoration: none;
-    color: #ffffff;
     font-weight: normal;
     transition: color 0.3s;
     position: relative;
@@ -92,9 +91,10 @@ nav {
 }
 
 .navigation a.active {
-    background-color: #3749b4;
+    background-color: #f1f1f1;
     padding: 8px 16px;
     border-radius: 15px;
+    color: black;
 }
 
 .navigation .profile {

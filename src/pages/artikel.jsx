@@ -88,7 +88,7 @@ function Artikel() {
         <img src="assets/img/logo.png" alt="Logo" className="logo" />
         <nav className="navigation">
           <Link to="/home"><a href="home.html">Home</a></Link>
-          <a href="#" className="navigation-link dropdown-toggle text-green-500" data-bs-toggle="dropdown">Tabungan</a>
+          <a href="#" className="navigation-link dropdown-toggle" data-bs-toggle="dropdown">Tabungan</a>
           <div className="dropdown-menu fade-up m-0">
             <Link to="/formbersama">
               <a href="formbersama.html" className="dropdown-item">Tabungan Bersama</a>

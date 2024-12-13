@@ -6,9 +6,8 @@ import Footer from "../component/Footer";
 
 function Keuangan() {
   const [notifications, setNotifications] = useState([
-    { id: 1, message: "Bayar tagihan listrik sebelum 30 November.", type: "Pengingat" },
-    { id: 2, message: "Gaji sebesar Rp 20.000.000 telah diterima.", type: "Pemasukan" },
-    { id: 3, message: "Dividen saham sebesar Rp 2.000.000 telah diterima.", type: "Investasi" },
+    { id: 1, message: "Menambahkan Tabungan Bersama.", type: "Berhasil" },
+    { id: 2, message: "Gaji sebesar Rp 5.250.000 telah diterima.", type: "Pemasukan" },
   ]);
   
   const [isNotificationPanelVisible, setIsNotificationPanelVisible] = useState(false);
@@ -22,7 +21,6 @@ function Keuangan() {
     setIsNotificationPanelVisible(false);
   };
 
-  // States for managing the form input and the visibility of elements
   const [income, setIncome] = useState("Rp 5.250.000");
   const [isEditing, setIsEditing] = useState(false);
   const [isBannerExpanded, setIsBannerExpanded] = useState(false);
@@ -231,7 +229,7 @@ function Keuangan() {
         <div className="summary-cards">
           <div className="card">
             <h1>Total Penghasilan</h1>
-            <p>Rp 5.000.000</p>
+            <p>Rp 5.250.000</p>
           </div>
           <div className="card">
             <h1>Total Pengeluaran</h1>

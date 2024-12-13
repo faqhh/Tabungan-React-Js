@@ -23,19 +23,17 @@ function ListBersama2() {
 
   const navigate = useNavigate();
   
-  // State untuk data tabungan
-  const [totalAmount] = useState(30000000); // Target tabungan
-  const [collectedAmount, setCollectedAmount] = useState(100000); // Jumlah terkumpul
-  const [progressPercent, setProgressPercent] = useState(0); // Persentase progress
+  const [totalAmount] = useState(30000000); 
+  const [collectedAmount, setCollectedAmount] = useState(100000); 
+  const [progressPercent, setProgressPercent] = useState(0); 
   const [transactions, setTransactions] = useState([
     {
       date: "30 Oktober 2024 - 12:00",
       day: "Rabu, 30 Oktober 2024",
       amount: "+ Rp 100.000",
     },
-  ]); // Riwayat transaksi
+  ]); 
 
-  // Hitung progress saat komponen dimuat
   useEffect(() => {
     const progress = ((collectedAmount / totalAmount) * 100).toFixed(2);
     setProgressPercent(progress);

@@ -75,8 +75,8 @@ function Isiartikel() {
               <a href="formpribadi.html" className="dropdown-item">Tabungan Mandiri</a>
             </Link>
           </div>
-          <Link to="/keuangan"><a href="keuangan.html" className="active">Keuangan</a></Link>
-          <Link to="/artikel"><a href="Artikel.html">Artikel</a></Link>
+          <Link to="/keuangan"><a href="keuangan.html">Keuangan</a></Link>
+          <Link to="/artikel"><a href="Artikel.html"  className="active">Artikel</a></Link>
           <div className="profile-section">
             <button className="notification-bell" onClick={toggleNotificationPanel}>
               <FontAwesomeIcon icon={faBell} />
@@ -139,10 +139,10 @@ function Isiartikel() {
         </div>
 
         <div className="article-content">
-          <h1>Tips Menabung Cepat: 5 Langkah Efektif untuk Mencapai Target Finansial</h1>
+          <h1>Tips Menabung Cepat: 3 Langkah Efektif untuk Mencapai Target Finansial</h1>
           <p>
             Menabung dengan cepat bisa menjadi tantangan, tetapi dengan strategi
-            yang tepat, tujuan finansialmu bisa tercapai lebih mudah. Berikut 5 tips
+            yang tepat, tujuan finansialmu bisa tercapai lebih mudah. Berikut 3 tips
             penting untuk menabung dengan cepat dan efektif:
           </p>
           <p>
